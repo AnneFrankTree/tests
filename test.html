@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Write a Leaf to Anne Frank</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lora&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="test.css" />
+</head>
+<body>
+
+<header>
+  <img src="logos2.png" alt="Logo" height="120" width="120" style="margin-left: -20px; margin-top: 10px;" />
+  <nav>
+    <ul>
+      <li><a href="#" id="home">Home</a></li>
+      <li><a href="#" id="tree">Tree</a></li>
+      <li><a href="#" id="leaf">Leaf</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="left-panel">
+    <div class="instructions">
+      <h2>Write a Message</h2>
+      <p class="quote">“I can shake off everything as I write; my sorrows disappear, my courage is reborn.” <span>— Anne Frank</span></p>
+      <p>
+        - Write an original message for Anne Frank on the leaf.<br />
+        - Use all lines, at least 3 sentences.<br />
+        - Be respectful, sincere, and thoughtful.<br />
+        - Flip the leaf to sign your name.<br />
+        - Click “Send” when done.
+      </p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="right-panel">
+    <div class="leaf-card" id="leafCard">
+      <div class="leaf-inner">
+        <div class="leaf-front">
+          <textarea class="leaf-message" placeholder="Write your message to Anne Frank..."></textarea>
+        </div>
+        <div class="leaf-back">
+          <input type="text" class="leaf-signature" placeholder="Enter your name..." />
+        </div>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button id="flipBtn">Flip Leaf</button>
+      <button id="sendBtn">Send to Tree</button>
+    </div>
+  </section>
+</main>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay" style="display:none;">
+  <img src="treewleaf.png" alt="Glowing Tree" class="glow-tree" id="glowTree" />
+</div>
+
+<footer>
+  <p>&copy; 2025 In Memory Of Anne Frank.</p>
+</footer>
+
+
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/11.7.3/firebase-firestore.js";
+
+// — Firebase setup —
+const firebaseConfig = {
+  apiKey: "AIzaSyCJC1HnvrzTmQZ33bKB58KEArHoU9MCWsI",
+  authDomain: "annefrankleaves.firebaseapp.com",
+  projectId: "annefrankleaves",
+  storageBucket: "annefrankleaves.appspot.com",
+  messagingSenderId: "239156775586",
+  appId: "1:239156775586:web:d12e394fafb0c9bb9e65fb"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// — DOM refs —
+const leafCard      = document.getElementById('leafCard');
+const flipBtn       = document.getElementById('flipBtn');
+const sendBtn       = document.getElementById('sendBtn');
+const messageInput  = document.querySelector('.leaf-message');
+const signatureInput= document.querySelector('.leaf-signature');
+const overlay       = document.getElementById('overlay');
+const glowTree      = document.getElementById('glowTree');
+
+// — your branch coords —
+const branchCoordinates = [
+  { x: 506, y: 180 },
+  { x: 521, y: 204 },
+  { x: 523, y: 182 },
+  { x: 521, y: 232 },
+  { x: 525, y: 252 },
+  { x: 504, y: 228 },
+  { x: 501, y: 265 },
+  { x: 522, y: 274 },
+  { x: 509, y: 293 },
+  { x: 477, y: 301 },
+  { x: 495, y: 312 },
+  { x: 470, y: 324 },
+  { x: 456, y: 312 },
+  { x: 486, y: 271 },
+  { x: 475, y: 253 },
+  { x: 464, y: 266 },
+  { x: 420, y: 308 },
+  { x: 443, y: 326 },
+  { x: 434, y: 338 },
+  { x: 409, y: 338 },
+  { x: 397, y: 328 },
+  { x: 383, y: 256 },
+  { x: 396, y: 252 },
+  { x: 418, y: 202 },
+  { x: 433, y: 199 },
+  { x: 460, y: 192 },
+  { x: 474, y: 192 },
+  { x: 493, y: 192 },
+  { x: 501, y: 141 },
+  { x: 509, y: 155 },
+  { x: 470, y: 155 },
+  { x: 496, y: 124 },
+  { x: 485, y: 117 },
+  { x: 476, y: 88 },
+  { x: 468, y: 104 },
+  { x: 459, y: 100 },
+  { x: 442, y: 112 },
+  { x: 427, y: 127 },
+  { x: 436, y: 134 },
+  { x: 407, y: 140 },
+  { x: 376, y: 179 },
+  { x: 373, y: 196 },
+  { x: 356, y: 198 },
+  { x: 426, y: 64 },
+  { x: 436, y: 57 },
+  { x: 454, y: 73 },
+  { x: 441, y: 86 },
+  { x: 412, y: 90 },
+  { x: 404, y: 68 },
+  { x: 412, y: 47 },
+  { x: 392, y: 59 },
+  { x: 384, y: 44 },
+  { x: 371, y: 40 },
+  { x: 375, y: 79 },
+  { x: 361, y: 94 },
+  { x: 355, y: 62 },
+  { x: 348, y: 38 },
+  { x: 332, y: 38 },
+  { x: 316, y: 60 },
+  { x: 306, y: 46 },
+  { x: 296, y: 42 },
+  { x: 346, y: 149 },
+  { x: 358, y: 128 },
+  { x: 375, y: 116 },
+  { x: 279, y: 40 },
+  { x: 280, y: 56 },
+  { x: 296, y: 82 },
+  { x: 304, y: 100 },
+  { x: 312, y: 109 },
+  { x: 272, y: 68 },
+  { x: 266, y: 53 },
+  { x: 248, y: 41 },
+  { x: 245, y: 61 },
+  { x: 235, y: 48 },
+  { x: 242, y: 81 },
+  { x: 215, y: 64 },
+  ];
+
+// — flip front/back —
+flipBtn.addEventListener('click', () => {
+  leafCard.classList.toggle('flipped');
+});
+
+// — helper: pick one branch at random —
+function pickRandomBranch() {
+  return branchCoordinates[
+    Math.floor(Math.random() * branchCoordinates.length)
+  ];
+}
+
+// — save to Firestore —
+async function saveLeafToFirestore(message, signature, position) {
+  return addDoc(collection(db, "leaves"), {
+    message,
+    signature,
+    timestamp: serverTimestamp(),
+    position
+  });
+}
+
+function animateLeafToBranch(branch) {
+  return new Promise(resolve => {
+    overlay.style.display = 'flex';
+    overlay.offsetHeight; // force reflow
+
+    const leafRect = leafCard.getBoundingClientRect();
+    const treeRect = glowTree.getBoundingClientRect();
+    const startX = leafRect.left;
+    const startY = leafRect.top;
+
+    // Coordinates where the stem is located within the leaf image
+    const stemOffsetX = 259;
+    const stemOffsetY = 466;
+
+    // Scale factor used in final position
+    const finalScale = 0.09;
+
+    // Adjust branch position to offset the stem
+    const endX = treeRect.left + branch.x - stemOffsetX * finalScale;
+    const endY = treeRect.top + branch.y - stemOffsetY * finalScale;
+
+    const dx = endX - startX;
+    const dy = endY - startY;
+
+    let angle;
+    const screenCenterX = window.innerWidth / 2;
+    if (startX < screenCenterX) {
+      // Left side of screen: random angle from -40 to 0
+      angle = -Math.random() * 40;
+    } else {
+      // Right side of screen: random angle from 0 to 40
+      angle = Math.random() * 40;
+    }
+
+    // 1. Clone the leaf and create a wrapper
+    const flyingLeaf = leafCard.cloneNode(true);
+    const wrapper = document.createElement('div');
+    wrapper.classList.add('leaf-wrapper');
+    wrapper.style.position = 'fixed';
+    wrapper.style.left = `${startX}px`;
+    wrapper.style.top = `${startY}px`;
+    wrapper.style.width = `${leafRect.width}px`;
+    wrapper.style.height = `${leafRect.height}px`;
+    wrapper.style.pointerEvents = 'none';
+    wrapper.style.zIndex = '10001';
+    wrapper.style.transition = 'transform 1.5s ease-in-out';
+    wrapper.style.transformOrigin = 'top left';
+
+    flyingLeaf.style.margin = '0';
+    flyingLeaf.style.width = '100%';
+    flyingLeaf.style.height = '100%';
+    flyingLeaf.style.transformOrigin = 'top left';
+    flyingLeaf.style.transition = 'none'; // rotation is visual only
+
+    // 2. Apply visual rotation to the inner leaf
+    flyingLeaf.style.transform = `rotate(${angle}deg)`;
+
+    // 3. Append leaf to wrapper, and wrapper to body
+    wrapper.appendChild(flyingLeaf);
+    document.body.appendChild(wrapper);
+
+    // 4. Animate the wrapper (not the leaf)
+    requestAnimationFrame(() => {
+      // Use the final scale consistently here
+      wrapper.style.transform = `translate(${dx}px, ${dy}px) scale(${finalScale})`;
+    });
+
+    wrapper.addEventListener('transitionend', () => {
+      wrapper.style.transition = 'none';
+      wrapper.style.position = 'absolute';
+
+      const overlayRect = overlay.getBoundingClientRect();
+      const branchXInOverlay = branch.x + (treeRect.left - overlayRect.left);
+      const branchYInOverlay = branch.y + (treeRect.top - overlayRect.top);
+
+      wrapper.style.left = `${branchXInOverlay - stemOffsetX * finalScale}px`;
+      wrapper.style.top = `${branchYInOverlay - stemOffsetY * finalScale}px`;
+      wrapper.style.transform = `scale(${finalScale})`;
+
+      overlay.appendChild(wrapper);
+      leafCard.style.visibility = 'visible';
+
+      resolve();
+    }, { once: true });
+  });
+}
+
+
+
+// — send button —
+sendBtn.addEventListener('click', async () => {
+  const message   = messageInput.value.trim();
+  const signature = signatureInput.value.trim();
+
+  if (message.length < 10) {
+    return alert('Please write a thoughtful message (at least 3 sentences).');
+  }
+  if (!signature) {
+    return alert('Please sign your name.');
+  }
+
+  const branch = pickRandomBranch();
+
+  try {
+    // 1) save to Firestore
+    await saveLeafToFirestore(message, signature, branch);
+
+    // 2) animate
+    await animateLeafToBranch(branch);
+
+    // 3) reset form & flip
+    messageInput.value   = '';
+    signatureInput.value = '';
+    leafCard.classList.remove('flipped');
+  } catch (err) {
+    console.error(err);
+    alert('Sorry, something went wrong. Please try again.');
+  }
+});
+</script>
+
+
+</body>
+</html>

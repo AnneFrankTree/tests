@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Books and Movies</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="general.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="video2.css">
+    <link rel="stylesheet" href="sidebar.css">
+  </head>
+  <body>
+    <header class="header">
+      <div class="left-section">
+        <img class="hamburger-menu" src="icons/hamburger-menu.svg">
+        <img class="youtube-logo" src="logos5.png">
+      </div>
+      <div class="middle-section">
+        <input class="search-bar" placeholder="Movies | Switch to Books?">
+        <button class="search-button">
+          <img class="search-icon" src="icons/search.svg">
+          <div class="tooltip">Search</div>
+        </button>
+        <!-- Put position absolute inside position relative -->
+        <button class="voice-search-button">
+          <img class="voice-search-icon" src="icons/voice-search-icon.svg">
+          <div class="tooltip">Search with your voice</div>
+        </button>
+      </div>
+      <div class="right-section">
+        <div class="upload-icon-container">
+          <div class="tooltip">Create</div>
+        </div>
+        <div class="youtube-apps-icon-container">
+          <img class="youtube-apps-icon" src="icons/youtube-apps.svg">
+          <div class="tooltip">Dropdown</div>
+        </div>
+
+<!-- Notification Popup -->
+<div class="notifications-icon-container">
+          <img class="notifications-icon" src="icons/notifications.svg">
+          <div class="notifications-count">0</div>
+          <div class="tooltip">Notifications</div>
+        </div>
+
+        <img class="current-user-picture" src="my-channel.png">
+      </div>
+    </header>
+
+    <nav class="sidebar">
+      <div class="sidebar-link">
+ <a href="index.html">       
+ <img src="icons/home.svg">
+ </a>        <div>Home</div>
+
+      </div>
+      <div class="sidebar-link">
+ <a href="resource2.html">
+        <img src="icons/explore.png">
+        </a> <div>Books</div>
+      </div>
+      <div class="sidebar-link">
+ <a href="treee.html">
+        <img src="icons/subscriptions.png">
+        </a> <div>Tree</div>
+      </div>
+      <div class="sidebar-link">
+<a href="test.html">
+        <img src="icons/originals.png">
+        </a> <div>Leaf</div>
+      </div>
+      <div class="sidebar-link">
+<a href="javascript:history.back();">
+        <img src="icons/youtube-music.png">
+</a>
+        <div>Return</div>
+      </div>
+      <div class="sidebar-link">
+<a href="https://www.annefrank.org/en/museum/">        
+<img src="icons/library.png">
+</a>
+        <div>AFH</div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="video-grid">
+        <div class="video-preview">
+          <div class="thumbnail-row">
+    <a href="https://www.google.com/search?q=anne+frank+the+whole+story&rlz=1C1GCEU_en-GB&oq=anne+frank+the+whole+story&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQLhiABDIGCAIQIxgnMgYIAxAjGCcyBwgEEAAYgAQyBwgFEAAYgAQyBwgGEAAYgAQyBwgHEAAYgAQyBwgIEAAYgAQyBwgJEAAYgATSAQgzNzAwajBqN6gCALACAA&sourceid=chrome&ie=UTF-8" target="_blank" class="thumbnail-link">
+            <img class="thumbnail" src="thumbnails/thumbnail-1.webp">
+</a>
+            <div class="video-time">189 min</div>
+          </div>
+          <div class="video-info-grid">
+            <div class="channel-picture">
+              <img class="profile-picture" src="channel.jpeg">
+            </div>
+            <div class="video-info">
+              <p class="video-title">
+                Anne Frank : The Whole Story
+              </p>
+              <p class="video-author">
+                Robert Dornhelm
+              </p>
+              <p class="video-stats">
+                1M &#183; 2001
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="video-preview">
+          <div class="thumbnail-row">
+<a href="https://www.google.com/search?q=the+diary+of+anne+frank+1959&rlz=1C1GCEU_en-GB&oq=the+diary+of+anne+frank+1959&gs_lcrp=EgZjaHJvbWUqDAgAECMYJxiABBiKBTIMCAAQIxgnGIAEGIoFMgwIARAuGBQYhwIYgAQyDAgCEAAYFBiHAhiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABDIHCAkQABiABNIBCDQ2NDhqMGo5qAIAsAIA&sourceid=chrome&ie=UTF-8" target="_blank" class="thumbnail-link">
+            <img class="thumbnail" src="thumbnails/thumbnail-2.webp">
+</a>
+               <div class="video-time">179 min</div>
+          </div>
+          <div class="video-info-grid">
+            <div class="channel-picture">
+              <img class="profile-picture" src="channel.jpeg">
+            </div>
+            <div class="video-info">
+              <p class="video-title">
+                The Diary Of Anne Frank (1959)
+              </p>
+              <p class="video-author">
+                George Stevens
+              </p>
+              <p class="video-stats">
+                500K views &#183; 1959
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="video-preview">
+          <div class="thumbnail-row">
+    <a href="https://www.google.com/search?q=the+attic+the+hiding+of+anne+frank&rlz=1C1GCEU_en-GB&oq=the+attic+the&gs_lcrp=EgZjaHJvbWUqDwgAECMYJxjjAhiABBiKBTIPCAAQIxgnGOMCGIAEGIoFMgwIARAuGCcYgAQYigUyBggCEEUYOTIMCAMQABgUGIcCGIAEMhAIBBAuGK8BGMcBGIAEGI4FMgcIBRAAGIAEMgcIBhAAGIAEMgcIBxAAGIAEMg0ICBAuGK8BGMcBGIAEMgcICRAAGIAE0gEIMTcwMWowajmoAgCwAgA&sourceid=chrome&ie=UTF-8" target="_blank" class="thumbnail-link">
+            <img class="thumbnail" src="thumbnails/thumbnail-3.webp">
+</a>
+            <div class="video-time">95 min</div>
+          </div>
+          <div class="video-info-grid">
+            <div class="channel-picture">
+              <img class="profile-picture" src="channel.jpeg">
+            </div>
+            <div class="video-info">
+              <p class="video-title">
+               The Attic: The Hiding Of Anne Frank
+              </p>
+              <p class="video-author">
+                John Erman
+              </p>
+              <p class="video-stats">
+                300K views &#183; 1988
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="video-preview">
+          <div class="thumbnail-row">
+    <a href="https://www.google.com/search?q=a+small+light&rlz=1C1GCEU_en-GB&oq=a+small+light++&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MggIARBFGCcYOzIGCAIQRRg7Mg0IAxAAGJECGIAEGIoFMgwIBBAuGBQYhwIYgAQyDQgFEAAYkQIYgAQYigUyDQgGEAAYkQIYgAQYigUyBwgHEAAYgAQyDQgIEAAYkQIYgAQYigUyDAgJEAAYQxiABBiKBdIBCDIxMDVqMGo5qAIAsAIA&sourceid=chrome&ie=UTF-8" target="_blank" class="thumbnail-link">
+            <img class="thumbnail" src="thumbnails/thumbnail-4.jpg">
+</a>
+            <div class="video-time">8 episodes</div>
+          </div>
+          <div class="video-info-grid">
+            <div class="channel-picture">
+              <img class="profile-picture" src="channel.jpeg">
+            </div>
+            <div class="video-info">
+              <p class="video-title">
+                A Small Light
+              </p>
+              <p class="video-author">
+                Susanna Fogel, Tony Phelan
+              </p>
+              <p class="video-stats">
+                 11M views &#183; 2023
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="video-preview">
+          <div class="thumbnail-row">
+    <a href="https://www.google.com/search?q=my+best+friend+anne+frank&rlz=1C1GCEU_en-GB&oq=my+best+fr&gs_lcrp=EgZjaHJvbWUqDwgAECMYJxjjAhiABBiKBTIPCAAQIxgnGOMCGIAEGIoFMgwIARAuGCcYgAQYigUyBggCEEUYOzIKCAMQLhixAxiABDIGCAQQRRg5MhIIBRAuGEMYgwEYsQMYgAQYigUyDAgGEAAYQxiABBiKBTIMCAcQABhDGIAEGIoFMgwICBAuGEMYgAQYigUyDAgJEAAYQxiABBiKBdIBCDE1NTNqMGo5qAIAsAIA&sourceid=chrome&ie=UTF-8" target="_blank" class="thumbnail-link">
+            <img class="thumbnail" src="thumbnails/thumbnail-5.jpg">
+</a>
+            <div class="video-time">103 min</div>
+          </div>
+          <div class="video-info-grid">
+            <div class="channel-picture">
+              <img class="profile-picture" src="channel.jpeg">
+            </div>
+            <div class="video-info">
+              <p class="video-title">
+       My Best Friend Anne Frank
+              </p>
+              <p class="video-author">
+                Ben Sombogaart
+              </p>
+              <p class="video-stats">
+                3.8M views &#183; 2021
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="video-preview">
+          <div class="thumbnail-row">
+   <a href="https://www.google.com/search?q=anne+frank+remembered+documentary&sca_esv=27056c0349cec439&rlz=1C1GCEU_en-GB&sxsrf=AHTn8zo6nJo6JbbvpLDpPkNDq2IpSfznCA%3A1747091862293&ei=loEiaMbREeGx5NoP4YG7oQM&gs_ssp=eJzj4tTP1TcwNUo2SDJg9FJMzMtLVUgrSszLVihKzU3NTUotSk1RSMlPLs1NzStJLKoEAE_ID94&oq=anne+frank+remembered+documen&gs_lp=Egxnd3Mtd2l6LXNlcnAiHWFubmUgZnJhbmsgcmVtZW1iZXJlZCBkb2N1bWVuKgIIADILEC4YgAQYkQIYigUyCxAAGIAEGIYDGIoFMgsQABiABBiGAxiKBTILEAAYgAQYhgMYigUyCxAAGIAEGIYDGIoFMgsQABiABBiGAxiKBTIIEAAYogQYiQUyCBAAGIAEGKIEMggQABiABBiiBDIFEAAY7wUyKRAuGIAEGJECGIoFGJcFGNwEGN4EGOAEGPQDGPEDGPUDGPYDGPcD2AEBSKEUUOACWJAMcAF4AZABAJgBjQGgAa8GqgEDNS4zuAEDyAEA-AEBmAIKoALBD8ICChAAGLADGNYEGEfCAg0QABiABBiwAxhDGIoFwgIOEAAYsAMY5AIY1gTYAQHCAhMQLhiABBiwAxhDGMgDGIoF2AEBwgIFEC4YgATCAgUQABiABMICChAAGIAEGEMYigXCAhQQLhiABBiXBRjcBBjeBBjgBNgBAcICBhAAGBYYHsICKRAuGIAEGJECGIoFGJcFGNwEGN4EGOAEGPQDGPEDGPUDGPYDGPcD2AEBmAMAiAYBkAYQugYGCAEQARgJkgcHNC41LjYtMaAHv4sBsgcHMy41LjYtMbgHuQ8&sclient=gws-wiz-serp" target="_blank" class="thumbnail-link">
+            <img class="thumbnail" src="thumbnails/thumbnail-6.jpg">
+</a>
+            <div class="video-time">117 min</div>
+          </div>
+          <div class="video-info-grid">
+            <div class="channel-picture">
+              <img class="profile-picture" src="channel.jpeg">
+            </div>
+            <div class="video-info">
+              <p class="video-title">
+        Anne Frank Remembered
+              </p>
+              <p class="video-author">
+                Jon Blair
+              </p>
+              <p class="video-stats">
+                1M views &#183; 1995
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="video-preview">
+          <div class="thumbnail-row">
+   <a href="https://www.google.com/search?q=the+diary+of+anne+frank+2009&sca_esv=27056c0349cec439&rlz=1C1GCEU_en-GB&sxsrf=AHTn8zpAaXXENTCz0-bdVfOA3DRTcSkuBA%3A1747091906677&ei=woEiaK6NKZWf5NoPj6Tv8QY&ved=0ahUKEwiu9vLDiJ-NAxWVD1kFHQ_SO24Q4dUDCBA&uact=5&oq=the+diary+of+anne+frank+2009&gs_lp=Egxnd3Mtd2l6LXNlcnAiHHRoZSBkaWFyeSBvZiBhbm5lIGZyYW5rIDIwMDkyBBAjGCcyChAjGIAEGCcYigUyCxAAGIAEGJECGIoFMgsQLhiABBiRAhiKBTILEAAYgAQYkQIYigUyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgsQABiABBiGAxiKBUioBFD4Alj4AnABeAGQAQCYAXCgAXCqAQMwLjG4AQPIAQD4AQGYAgKgAowBwgIKEAAYsAMY1gQYR5gDAIgGAZAGCJIHAzEuMaAHsAyyBwMwLjG4B4cB&sclient=gws-wiz-serp" target="_blank" class="thumbnail-link">
+        <img class="thumbnail" src="thumbnails/thumbnail-7.webp">
+</a>
+            <div class="video-time">5 eps</div>
+          </div>
+          <div class="video-info-grid">
+            <div class="channel-picture">
+              <img class="profile-picture" src="channel.jpeg">
+            </div>
+            <div class="video-info">
+              <p class="video-title">
+        The Diary Of Anne Frank (2009)
+              </p>
+              <p class="video-author">
+	Jon Jones
+              </p>
+              <p class="video-stats">
+               BBC platform &#183; 2009
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="video-preview">
+          <div class="thumbnail-row">
+    <a href="https://www.google.com/search?q=where+is+anne+frank+2021&rlz=1C1GCEU_en-GB&oq=where+is+anne+fr&gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTIGCAEQRRg5MgYIAhAjGCcyEAgDEC4YkQIY1AIYgAQYigUyEAgEEC4YkQIY1AIYgAQYigUyDAgFEAAYFBiHAhiABDIHCAYQABiABDINCAcQABiRAhiABBiKBTINCAgQABiRAhiABBiKBTIHCAkQABiABNIBCDI2MDZqMGo5qAIAsAIA&sourceid=chrome&ie=UTF-8" target="_blank" class="thumbnail-link">
+            <img class="thumbnail" src="thumbnails/thumbnail-8.webp">
+</a>
+            <div class="video-time">99 min</div>
+          </div>
+          <div class="video-info-grid">
+            <div class="channel-picture">
+              <img class="profile-picture" src="channel.jpeg">
+            </div>
+            <div class="video-info">
+              <p class="video-title">
+                Where is Anne Frank?
+              </p>
+              <p class="video-author">
+                Ari Folman
+              </p>
+              <p class="video-stats">
+                Animation &#183; 2021
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="video-preview">
+          <div class="thumbnail-row">
+    <a href="https://www.google.com/search?q=anne+frank+parallel+stories&rlz=1C1GCEU_en-GB&oq=anne+frank+parall&gs_lcrp=EgZjaHJvbWUqDAgAECMYJxiABBiKBTIMCAAQIxgnGIAEGIoFMg0IARAuGJECGIAEGIoFMgYIAhBFGDsyBggDEEUYOzIGCAQQRRhAMgYIBRBFGDsyBggGEEUYOTIGCAcQRRg90gEIMjQ2OWowajmoAgCwAgA&sourceid=chrome&ie=UTF-8" target="_blank" class="thumbnail-link">
+            <img class="thumbnail" src="thumbnails/thumbnail-9.webp">
+</a>
+            <div class="video-time">92 min</div>
+          </div>
+          <div class="video-info-grid">
+            <div class="channel-picture">
+              <img class="profile-picture" src="channel.jpeg">
+            </div>
+            <div class="video-info">
+              <p class="video-title">
+                Anne Frank : Parallel Stories
+              </p>
+              <p class="video-author">
+                Sabina Fedeli, Anna Migotto
+              </p>
+              <p class="video-stats">
+                200K views &#183; 2019
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="video-preview">
+          <div class="thumbnail-row">
+   <a href="https://www.google.com/search?q=anne+b+real&rlz=1C1GCEU_en-GB&oq=anne+b+real&gs_lcrp=EgZjaHJvbWUqDAgAECMYJxiABBiKBTIMCAAQIxgnGIAEGIoFMgcIARAuGIAEMgcIAhAAGIAEMggIAxAAGBYYHjIICAQQABgWGB4yCAgFEAAYFhgeMggIBhAAGBYYHjIICAcQABgWGB4yCggIEAAYChgWGB4yCAgJEAAYFhge0gEIMjg1N2owajmoAgCwAgE&sourceid=chrome&ie=UTF-8" target="_blank" class="thumbnail-link">
+            <img class="thumbnail" src="thumbnails/thumbnail-10.jpg">
+</a>
+            <div class="video-time">91 min</div>
+          </div>
+          <div class="video-info-grid">
+            <div class="channel-picture">
+              <img class="profile-picture" src="channel.jpeg">
+            </div>
+            <div class="video-info">
+              <p class="video-title">
+                Anne B. Real
+              </p>
+              <p class="video-author">
+                Lisa France
+              </p>
+              <p class="video-stats">
+                150K views &#183; 2003
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="video-preview">
+          <div class="thumbnail-row">
+    <a href="https://www.google.com/search?q=mi+ricordo+anna+frank&rlz=1C1GCEU_en-GB&oq=mi+ricordo+&gs_lcrp=EgZjaHJvbWUqDAgAECMYJxiABBiKBTIMCAAQIxgnGIAEGIoFMgwIARAuGBQYhwIYgAQyCggCEEUYFhgeGDkyBwgDEC4YgAQyBwgEEC4YgAQyBwgFEAAYgAQyBwgGEAAYgAQyBwgHEC4YgAQyCAgIEAAYFhgeMggICRAAGBYYHtIBCDIzMTBqMGo5qAIAsAIA&sourceid=chrome&ie=UTF-8" target="_blank" class="thumbnail-link">
+            <img class="thumbnail" src="thumbnails/thumbnail-11.jpg">
+</a>
+            <div class="video-time">100 min</div>
+          </div>
+          <div class="video-info-grid">
+            <div class="channel-picture">
+              <img class="profile-picture" src="channel.jpeg">
+            </div>
+            <div class="video-info">
+              <p class="video-title">
+                Mi Ricordo Anna Frank
+              </p>
+              <p class="video-author">
+                Alberto Negrin
+              </p>
+              <p class="video-stats">
+                400K views &#183; 2009
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="video-preview">
+          <div class="thumbnail-row">
+<a href="https://www.google.com/search?q=love+all+you+have+left&rlz=1C1GCEU_en-GB&oq=love+all+you+have&gs_lcrp=EgZjaHJvbWUqEAgAEAAYkQIY4wIYgAQYigUyEAgAEAAYkQIY4wIYgAQYigUyDQgBEC4YkQIYgAQYigUyBggCEEUYOTIICAMQABgWGB4yCAgEEAAYFhgeMggIBRAAGBYYHjIICAYQABgWGB4yCAgHEAAYFhgeMggICBAAGBYYHjIICAkQABgWGB7SAQg0MDAzajBqOagCALACAA&sourceid=chrome&ie=UTF-8" target="_blank" class="thumbnail-link">
+            <img class="thumbnail" src="thumbnails/thumbnail-12.webp">
+</a>
+            <div class="video-time">80 min</div>
+          </div>
+          <div class="video-info-grid">
+            <div class="channel-picture">
+              <img class="profile-picture" src="channel.jpeg">
+            </div>
+            <div class="video-info">
+              <p class="video-title">
+                Love All You Have Left
+              </p>
+              <p class="video-author">
+                Matt Sivertson
+              </p>
+              <p class="video-stats">
+                500K views &#183; 2017
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+<!-- Notification Modal -->
+<div id="notification-modal" class="notification-modal hidden">
+  <div class="modal-content">
+    <h2>NO NEW NOTIFICATIONS</h2>
+    <p>All is quiet on the tree today. No new leaves have fallen.</p>
+    <button class="close-modal">Close</button>
+  </div>
+</div>
+
+<script>
+  const bell = document.querySelector('.notifications-icon-container');
+  const modal = document.getElementById('notification-modal');
+  const closeBtn = document.querySelector('.close-modal');
+
+  bell.addEventListener('click', () => {
+    modal.classList.remove('hidden');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+  });
+
+  // Optional: Close modal by clicking outside the content box
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.add('hidden');
+    }
+  });
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+	<title>Anne Frank - Ms. DiLonardo's class</title>
+	<link rel="stylesheet" href="abttree.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<style>
+	   body{
+		transition: opacity 0.5s ease-in-out;
+		opacity: 1;
+	}
+	.fade-out{
+		opacity: 0;
+	}
+</style>
+</head>
+<body>
+	<div class="banner">
+		<div class="navbar">
+		    <img src="logos3.png" class="logo">
+		<ul>
+		    <li><a href="#" id="home">Home</a></li>
+<script>
+	document.getElementById('home').addEventListener('click',function() {
+	document.body.classList.add('fade-out');
+	setTimeout(function(){
+	  window.location.href = 'index.html';
+}, 400);
+});
+	</script>
+ 		    <li><a href="#">Tree</a></li>
+		    <li><a href="#">Leaf</a></li>
+		</ul>
+	    </div>
+
+	<div class="content">
+	<h1>About The Chestnut Tree</h1>
+	<p>The Anne Frank Tree is a symbol of hope, resilience, and the enduring spirit of a young girl who faced unimaginable challenges during the Holocaust. <br>This remarkable tree, a horse chestnut located in the Amsterdam neighborhood where Anne Frank and her family hid from the Nazis, became a source of inspiration for Anne as she wrote her diary.
+</p>
+<p>In her diary, Anne described the tree outside her window, expressing her longing for freedom and her dreams for a better world. <br>The tree stood as a reminder of nature's beauty and the life that continued outside the confines of her hiding place. 
+</p>
+<p>Sadly, the tree suffered from disease and was ultimately removed in 2010. However, its legacy lives on through the countless lives it has touched and the messages of hope it represents. <br>Today, saplings from the original tree are being planted around the world, spreading Anne's message of love, tolerance, and the importance of standing up against injustice.</p>
+
+<p>Visitors to the Anne Frank House can reflect on the significance of the tree and its connection to Anne's story. <br>It serves as a powerful reminder of the impact one person can have on the world, even in the face of adversity.
+</p>
+		<div>
+	<button type="button" id="goback"><span></span>GO BACK</button>
+
+<script>
+	document.getElementById('goback').addEventListener('click',function() {
+	document.body.classList.add('fade-out');
+	setTimeout(function(){
+	  window.location.href = 'index.html';
+}, 400);
+});
+	</script>
+
+	<button type="button"><span></span>VIEW PICTURES</button>
+		</div>
+	</div>
+	</div>
+</body>
+
+<footer>
+        <p>&copy; 2025 In Memory Of Anne Frank.</p>
+    </footer>
+</html>
+</html>

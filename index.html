@@ -1,105 +1,314 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
+	<meta charset="UTF-8" />
 	<title>Anne Frank - Ms. DiLonardo's class</title>
 	<link rel="stylesheet" href="treestyling.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-	<style>
-	   body{
-		transition: opacity 0.5s ease-in-out;
-		opacity: 1;
-	}
-	.fade-out{
-		opacity: 0;
-	}
-</style>
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
 	<div class="hero">
 		<div class="navbar">
-		    <img src="logos1.png"
-			height="90"
-			width="90"
-			style="margin-left: -90px; 
-			margin-top: -20px;">
-		    <ul>
-			<li><a href="#" id="home">Home</a></li>
+			<img src="logos1.png" height="90" width="90" style="margin-left: -90px; margin-top: -20px;">
+			<ul>
+				<li><a href="#" id="home">Home</a></li>
+				<script>
+					document.getElementById('home').addEventListener('click', function () {
+						document.body.classList.add('fade-out');
+						setTimeout(function () {
+							window.location.href = 'index.html';
+						}, 400);
+					});
+				</script>
+				<li><a href="#" id="tree">Tree</a></li>
+		<script>
+					document.getElementById('tree').addEventListener('click', function () {
+						document.body.classList.add('fade-out');
+						setTimeout(function () {
+							window.location.href = 'treee.html';
+						}, 400);
+					});
+				</script>
+				<li><a href="#" id="leaf">Leaf</a></li>
+				<script>
+					document.getElementById('leaf').addEventListener('click', function () {
+						document.body.classList.add('fade-out');
+						setTimeout(function () {
+							window.location.href = 'test.html';
+						}, 400);
+					});
+				</script>
+			</ul>
+			<div class="navbar-icons" style="position: relative;">
+				<img src="bell.png" alt="Bell Icon">
+				<img src="user.png" alt="User Icon">
 
-<script>
-	document.getElementById('home').addEventListener('click',function() {
-	document.body.classList.add('fade-out');
-	setTimeout(function(){
-	  window.location.href = 'index.html';
-}, 400);
-});
-	</script>
-			<li><a href="#">Tree</a></li>
-			<li><a href="#" id="leaf">Leaf</a></li>
-	<script>
-document.getElementById('leaf').addEventListener('click',function() {
-	document.body.classList.add('fade-out');
-	setTimeout(function(){
-	  window.location.href = 'test.html';
-}, 400);
-});
-	</script>
-		    </ul>
-		<div class="navbar-icons">
-			<img src="bell.png">
-			<img src="user.png">
-			<a href="resource.html">
-    <img src="menu.png" alt="Resource" style="cursor: pointer;">
-</a>
+				<!-- Hamburger Icon Dropdown -->
+				<div class="dropdown">
+					<img src="menu.png" alt="Menu" class="menu-icon" id="menuIcon" style="cursor: pointer;">
+					<div class="dropdown-content" id="dropdownMenu" style="display: none; position: absolute; background: white; border: 1px solid #ccc; min-width: 150px; z-index: 100; padding: 8px 0;">
+						<!-- Search input inside dropdown -->
+						<input type="text" id="dropdownSearch" placeholder="Search..." style="width: 90%; margin: 8px 5%; padding: 5px; border-radius: 4px; border: 1px solid #ccc;">
 
+						<a href="resource.html">Movies</a>
+						<a href="resource2.html">Books</a>
+						<a href="quote.html">Quotes</a>
+					</div>
+				</div>
+			</div>
+
+			<script>
+				const menuIcon = document.getElementById("menuIcon");
+				const dropdownMenu = document.getElementById("dropdownMenu");
+				const dropdownSearch = document.getElementById("dropdownSearch");
+
+				menuIcon.addEventListener("click", function (event) {
+					if (dropdownMenu.style.display === "block") {
+						dropdownMenu.style.display = "none";
+					} else {
+						dropdownMenu.style.display = "block";
+						dropdownSearch.value = '';
+						filterLinks('');
+						dropdownSearch.focus();
+					}
+					event.stopPropagation();
+				});
+
+				dropdownSearch.addEventListener('input', function () {
+					const filter = this.value.toLowerCase();
+					filterLinks(filter);
+				});
+
+				function filterLinks(filter) {
+					const links = dropdownMenu.querySelectorAll('a');
+					links.forEach(link => {
+						const text = link.textContent.toLowerCase();
+						link.style.display = text.includes(filter) ? '' : 'none';
+					});
+				}
+
+				document.addEventListener("click", function (event) {
+					if (!dropdownMenu.contains(event.target) && event.target !== menuIcon) {
+						dropdownMenu.style.display = "none";
+					}
+				});
+			</script>
+		</div>
+
+		<div class="green-bar"> Anne Frank - The Chestnut Tree </div>
+
+		<div class="banner">
+			<div class="left-column">
+				<div class="search-box">
+					<input type="text" />
+					<img src="searchbox.png" alt="Search Box Image" />
+				</div>
+				<h1>Tribute to <span> Anne Frank </span></h1>
+				<h3>Send A Leaf, <span> Share Your Heart </span></h3>
+				<p>The Anne Frank Tree is a powerful symbol of hope and resilience. To honor her memory, send a virtual leaf to the Chestnut Tree, representing your remembrance and commitment to her story. <br> Each leaf is a way to connect with Anne's legacy and promote values of tolerance and understanding.</p>
+				<div class="btn">
+					<button type="button" class="primary-btn" id="aboutTree">About The Tree</button>
+
+					<script>
+						document.getElementById('aboutTree').addEventListener('click', function () {
+							document.body.classList.add('fade-out');
+							setTimeout(function () {
+								window.location.href = 'abttree.html';
+							}, 400);
+						});
+					</script>
+
+					<button type="button" id="learnmore">Learn More</button>
+
+					<script>
+						document.getElementById('learnmore').addEventListener('click', function () {
+							document.body.classList.add('fade-out');
+							setTimeout(function () {
+								window.open('https://www.annefrank.org/en/anne-frank/', '_blank');
+							}, 400);
+						});
+					(() => {
+  const input = document.getElementById('dropdownSearch');
+  let currentIndex = -1;
+  let highlights = [];
+
+  // Remove old highlights
+  function removeHighlights() {
+    highlights.forEach(mark => {
+      const parent = mark.parentNode;
+      parent.replaceChild(document.createTextNode(mark.textContent), mark);
+      parent.normalize();
+    });
+    highlights = [];
+    currentIndex = -1;
+  }
+
+  // Highlight all matches and store them
+  function highlightMatches(term) {
+    removeHighlights();
+    if (!term) return;
+
+    const walk = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+    const regex = new RegExp(term, 'gi');
+    const nodesToHighlight = [];
+
+    while(walk.nextNode()) {
+      if (walk.currentNode.nodeValue.match(regex)) {
+        nodesToHighlight.push(walk.currentNode);
+      }
+    }
+
+    nodesToHighlight.forEach(textNode => {
+      const parent = textNode.parentNode;
+      const frag = document.createDocumentFragment();
+      let lastIndex = 0;
+      const text = textNode.nodeValue;
+
+      text.replace(regex, (match, offset) => {
+        // Append text before match
+        if (offset > lastIndex) {
+          frag.appendChild(document.createTextNode(text.slice(lastIndex, offset)));
+        }
+
+        // Create mark for matched text
+        const mark = document.createElement('mark');
+        mark.className = 'search-highlight';
+        mark.textContent = match;
+        frag.appendChild(mark);
+        highlights.push(mark);
+        lastIndex = offset + match.length;
+      });
+
+      // Append remaining text after last match
+      if (lastIndex < text.length) {
+        frag.appendChild(document.createTextNode(text.slice(lastIndex)));
+      }
+
+      parent.replaceChild(frag, textNode);
+    });
+  }
+
+  // Scroll to and focus on the current highlight
+  function scrollToHighlight(index) {
+    if (index < 0 || index >= highlights.length) return;
+    highlights.forEach(h => h.classList.remove('active-highlight'));
+    const current = highlights[index];
+    current.classList.add('active-highlight');
+    current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // Create navigation UI under dropdownSearch input
+  let navUI = null;
+  function createNavUI() {
+    if (navUI) return;
+    navUI = document.createElement('div');
+    navUI.style.position = 'absolute';
+    navUI.style.background = 'white';
+    navUI.style.border = '1px solid #ccc';
+    navUI.style.borderRadius = '4px';
+    navUI.style.padding = '4px 8px';
+    navUI.style.marginTop = '4px';
+    navUI.style.fontFamily = 'sans-serif';
+    navUI.style.fontSize = '14px';
+    navUI.style.zIndex = '1000';
+    navUI.style.display = 'flex';
+    navUI.style.gap = '8px';
+    navUI.style.alignItems = 'center';
+
+    const prevBtn = document.createElement('button');
+    prevBtn.textContent = '◀';
+    const nextBtn = document.createElement('button');
+    nextBtn.textContent = '▶';
+    const countSpan = document.createElement('span');
+    countSpan.textContent = '0 / 0';
+
+    prevBtn.addEventListener('click', () => {
+      if (highlights.length === 0) return;
+      currentIndex = (currentIndex - 1 + highlights.length) % highlights.length;
+      scrollToHighlight(currentIndex);
+      countSpan.textContent = `${currentIndex + 1} / ${highlights.length}`;
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (highlights.length === 0) return;
+      currentIndex = (currentIndex + 1) % highlights.length;
+      scrollToHighlight(currentIndex);
+      countSpan.textContent = `${currentIndex + 1} / ${highlights.length}`;
+    });
+
+    navUI.appendChild(prevBtn);
+    navUI.appendChild(nextBtn);
+    navUI.appendChild(countSpan);
+
+    input.parentNode.appendChild(navUI);
+
+    // Position navUI under input
+    const rect = input.getBoundingClientRect();
+    navUI.style.top = rect.bottom + window.scrollY + 'px';
+    navUI.style.left = rect.left + window.scrollX + 'px';
+    navUI.style.minWidth = rect.width + 'px';
+  }
+
+  function removeNavUI() {
+    if (navUI) {
+      navUI.remove();
+      navUI = null;
+    }
+  }
+
+  // On Enter key pressed inside dropdownSearch
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const term = input.value.trim();
+      if (!term) {
+        removeHighlights();
+        removeNavUI();
+        return;
+      }
+      highlightMatches(term);
+      if (highlights.length > 0) {
+        currentIndex = 0;
+        scrollToHighlight(currentIndex);
+        createNavUI();
+        navUI.querySelector('span').textContent = `1 / ${highlights.length}`;
+      } else {
+        alert('No matches found.');
+        removeNavUI();
+      }
+    }
+  });
+
+  // Clear highlights and navUI when user clears input
+  input.addEventListener('input', () => {
+    if (!input.value.trim()) {
+      removeHighlights();
+      removeNavUI();
+    }
+  });
+
+  // Optional: clear highlights if user clicks outside input or navUI
+  document.addEventListener('click', (e) => {
+    if (!input.contains(e.target) && (!navUI || !navUI.contains(e.target))) {
+      removeHighlights();
+      removeNavUI();
+    }
+  });
+})();
+</script>
+				</div>
+			</div>
+
+			<div class="right-column">
+				<img src="tree.png" class="my-image" alt="Chestnut Tree Image">
+			</div>
+		</div>
 	</div>
-	</div>
-	<div class="green-bar"> Anne Frank - The Chestnut Tree
-</div>
-	<div class="banner">
-		<div class="left-column">
-<div class="search-box"
-<input type="text">		
-	<img src="searchbox.png">	
-	</div>
-	<h1>Tribute to <span> Anne Frank </span> </h1>
-	<h3>Send A Leaf, <span> Share Your Heart </span> </h3>
-<p>	The Anne Frank Tree is a powerful symbol of hope and resilience. To honor her memory, send a virtual leaf to the Chestnut Tree, representing your remembrance and commitment to her story. <br> Each leaf is a way to connect with Anne's legacy and promote values of tolerance and understanding.</p>
-	<div class="btn">
-		<button type="button" class="primary-btn" id="aboutTree">About The Tree</button>
-
-<script>
-	document.getElementById('aboutTree').addEventListener('click',function() {
-	document.body.classList.add('fade-out');
-	setTimeout(function(){
-	  window.location.href = 'abttree.html';
-}, 400);
-});
-	</script>
-
-
-		<button type="button" id="learnmore">Learn More</button>
-
-<script> 
-	document.getElementById('learnmore').addEventListener('click',function() {
-	document.body.classList.add('fade-out');
-	setTimeout(function(){
-	  window.open('https://www.annefrank.org/en/anne-frank/','_blank');
-}, 400);
-});
-	</script>
-	  
-
-	 </div>
-
-	</div>
-		<div class="right-column">
-			<img src="Tree.png" class="my-image">
-	</div>
-      </div>
 
 </body>
 <footer>
-        <p>&copy; 2025 In Memory Of Anne Frank.</p>
-    </footer>
+	<p>&copy; 2025 In Memory Of Anne Frank.</p>
+</footer>
 </html>

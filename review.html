@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Anne Frank Tribute Review Page</title>
+<style>
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Georgia', serif;
+    background: #fefefe;
+    color: #333;
+    margin: 0;
+    padding: 2rem;
+    line-height: 1.5;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #5a4d41;
+  }
+
+  /* Form container */
+  .review-form {
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+    background: #fff;
+    border: 1px solid #d7cbbd;
+    border-radius: 10px;
+    padding: 1.8rem 2rem;
+    box-shadow: 0 0 10px rgba(90, 77, 65, 0.1);
+  }
+
+  /* Description */
+  .form-description {
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #7a6f62;
+  }
+
+  /* Star rating */
+  .star-rating {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .star-rating input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .star-rating label {
+    cursor: pointer;
+    font-size: 2.8rem;
+    color: #c9c6c1;
+    transition: color 0.3s ease;
+    user-select: none;
+    position: relative;
+  }
+
+  /* Hover effect: highlight stars up to hovered */
+  .star-rating label:hover,
+  .star-rating label:hover ~ label {
+    color: #b68c47;
+  }
+
+  /* Checked stars */
+  .star-rating input[type="radio"]:checked + .star {
+    color: #b68c47;
+  }
+
+  /* Screen reader only helper */
+  .sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+
+  /* Textarea */
+  textarea {
+    width: 100%;
+    font-family: 'Georgia', serif;
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border: 1.8px solid #d7cbbd;
+    resize: vertical;
+    color: #5a4d41;
+    transition: border-color 0.3s ease;
+  }
+
+  textarea:focus {
+    outline: none;
+    border-color: #b68c47;
+    background-color: #fff9e6;
+  }
+
+  /* Submit button */
+  .submit-btn {
+    display: block;
+    margin: 1.5rem auto 0 auto;
+    background-color: #b68c47;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    padding: 0.75rem 2.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgb(182 140 71 / 0.5);
+    transition: background-color 0.3s ease;
+  }
+
+  .submit-btn:disabled {
+    background-color: #d7cbbd;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  .submit-btn:not(:disabled):hover {
+    background-color: #a27826;
+  }
+
+  /* Reviews display container */
+  .reviews-display {
+    max-width: 800px;
+    margin: 0 auto;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 1rem;
+    border-top: 2px solid #d7cbbd;
+  }
+
+  /* Individual review cards */
+  .review-card {
+    display: inline-block;
+    vertical-align: top;
+    background: #fff8e7;
+    border: 1px solid #d7cbbd;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    margin: 1rem 0.5rem 1rem 0;
+    width: 250px;
+    box-shadow: 0 2px 6px rgb(90 77 65 / 0.2);
+    font-family: 'Georgia', serif;
+    color: #5a4d41;
+    transition: transform 0.3s ease, opacity 0.4s ease;
+    opacity: 0;
+  }
+
+  .review-card.visible {
+    opacity: 1;
+  }
+
+  .review-card:hover,
+  .review-card:focus {
+    outline: none;
+    box-shadow: 0 4px 12px rgb(182 140 71 / 0.6);
+    transform: translateY(-5px);
+  }
+
+  /* Review stars inside cards */
+  .review-stars {
+    font-size: 1.3rem;
+    color: #b68c47;
+    margin-bottom: 0.5rem;
+    user-select: none;
+  }
+
+  /* Review text */
+  .review-text {
+    font-style: italic;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    color: #4a3d32;
+    max-height: 6rem;
+    overflow-y: auto;
+    white-space: normal;
+  }
+</style>
+</head>
+<body>
+
+<section class="review-section" aria-labelledby="review-title">
+  <h2 id="review-title" class="section-title">Reviews &amp; Messages</h2>
+
+  <form class="review-form" aria-describedby="form-desc" novalidate>
+    <p id="form-desc" class="form-description">
+      Rate the website and leave an anonymous message to Ms. DiLonardo
+    </p>
+
+    <fieldset class="star-rating" aria-label="Star rating" role="radiogroup">
+      <legend class="sr-only">Star rating</legend>
+      <label>
+        <input type="radio" name="rating" value="1" />
+        <span class="star" aria-hidden="true">★</span>
+        <span class="sr-only">1 star</span>
+      </label>
+      <label>
+        <input type="radio" name="rating" value="2" />
+        <span class="star" aria-hidden="true">★</span>
+        <span class="sr-only">2 stars</span>
+      </label>
+      <label>
+        <input type="radio" name="rating" value="3" />
+        <span class="star" aria-hidden="true">★</span>
+        <span class="sr-only">3 stars</span>
+      </label>
+      <label>
+        <input type="radio" name="rating" value="4" />
+        <span class="star" aria-hidden="true">★</span>
+        <span class="sr-only">4 stars</span>
+      </label>
+      <label>
+        <input type="radio" name="rating" value="5" />
+        <span class="star" aria-hidden="true">★</span>
+        <span class="sr-only">5 stars</span>
+      </label>
+    </fieldset>
+
+    <textarea
+      name="message"
+      placeholder="Write an anonymous message to Ms. DiLonardo..."
+      rows="4"
+      aria-label="Anonymous message to Ms. DiLonardo"
+      required
+    ></textarea>
+
+    <button type="submit" class="submit-btn" disabled>
+      Submit Review
+    </button>
+  </form>
+
+  <div class="reviews-display" aria-live="polite" aria-atomic="true" aria-relevant="additions">
+    <!-- Review cards appended here -->
+  </div>
+</section>
+
+<script>
+(() => {
+  const form = document.querySelector('.review-form');
+  const stars = [...document.querySelectorAll('.star-rating input[type="radio"]')];
+  const submitBtn = form.querySelector('.submit-btn');
+  const textarea = form.querySelector('textarea');
+  const reviewsContainer = document.querySelector('.reviews-display');
+
+  let currentRating = 0;
+
+  // Enable submit if rating selected and message filled
+  function updateSubmitState() {
+    const message = textarea.value.trim();
+    submitBtn.disabled = !currentRating || message.length === 0;
+  }
+
+  stars.forEach(star => {
+    star.addEventListener('change', () => {
+      currentRating = parseInt(star.value, 10);
+      updateSubmitState();
+    });
+  });
+
+  textarea.addEventListener('input', updateSubmitState);
+
+  // Helper: create star string for display (filled stars)
+  function starsString(rating) {
+    return '★'.repeat(rating) + '☆'.repeat(5 - rating);
+  }
+
+  // Render one review card
+  function renderReviewCard({ rating, message }) {
+    const card = document.createElement('article');
+    card.className = 'review-card';
+    card.tabIndex = 0; // focusable
+
+    // Stars
+    const starDiv = document.createElement('div');
+    starDiv.className = 'review-stars';
+    starDiv.textContent = starsString(rating);
+    card.appendChild(starDiv);
+
+    // Message
+    const msgP = document.createElement('p');
+    msgP.className = 'review-text';
+    msgP.textContent = message;
+    card.appendChild(msgP);
+
+    // Animate fade in after insertion
+    requestAnimationFrame(() => {
+      card.classList.add('visible');
+    });
+
+    return card;
+  }
+
+  // Load reviews from localStorage and display
+  function loadReviews() {
+    let reviews = [];
+    try {
+      const data = localStorage.getItem('anneFrankReviews');
+      if (data) {
+        reviews = JSON.parse(data);
+      }
+    } catch (e) {
+      console.warn('Failed to parse reviews:', e);
+    }
+
+    reviews.forEach(review => {
+      const card = renderReviewCard(review);
+      reviewsContainer.appendChild(card);
+    });
+  }
+
+  // Save reviews to localStorage
+  function saveReview(review) {
+    let reviews = [];
+    try {
+      const data = localStorage.getItem('anneFrankReviews');
+      if (data) {
+        reviews = JSON.parse(data);
+      }
+    } catch (e) {
+      console.warn('Failed to parse reviews:', e);
+    }
+    reviews.push(review);
+    localStorage.setItem('anneFrankReviews', JSON.stringify(reviews));
+  }
+
+  // Handle form submit
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const message = textarea.value.trim();
+    if (!currentRating || message.length === 0) return;
+
+    const review = { rating: currentRating, message };
+    saveReview(review);
+
+    const card = renderReviewCard(review);
+    reviewsContainer.appendChild(card);
+
+    // Scroll newly added card into view
+    card.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+
+    // Reset form
+    form.reset();
+    currentRating = 0;
+    updateSubmitState();
+
+    // Move focus back to the star rating for accessibility
+    stars[0].focus();
+  });
+
+  // Initial load
+  loadReviews();
+  updateSubmitState();
+})();
+</script>
+
+</body>
+</html>

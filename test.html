@@ -21,6 +21,31 @@
   </nav>
 </header>
 
+<script>
+					document.getElementById('home').addEventListener('click', function () {
+						document.body.classList.add('fade-out');
+						setTimeout(function () {
+							window.location.href = 'index.html';
+						}, 400);
+					});
+				</script>
+		<script>
+					document.getElementById('tree').addEventListener('click', function () {
+						document.body.classList.add('fade-out');
+						setTimeout(function () {
+							window.location.href = 'treee.html';
+						}, 400);
+					});
+				</script>
+		<script>
+					document.getElementById('leaf').addEventListener('click', function () {
+						document.body.classList.add('fade-out');
+						setTimeout(function () {
+							window.location.href = 'test.html';
+						}, 400);
+					});
+				</script>
+		
 <main>
   <section class="left-panel">
     <div class="instructions">
@@ -31,6 +56,7 @@
         - Use all lines, at least 3 sentences.<br />
         - Be respectful, sincere, and thoughtful.<br />
         - Flip the leaf to sign your name.<br />
+	- Flip the leaf again to return to the front side. </br>
         - Click “Send” when done.
       </p>
     </div>
@@ -59,7 +85,7 @@
 
 <!-- Overlay -->
 <div class="overlay" id="overlay" style="display:none;">
-  <img src="treewleaf.PNG" alt="Glowing Tree" class="glow-tree" id="glowTree" />
+  <img src="treewleaf.png" alt="Glowing Tree" class="glow-tree" id="glowTree" />
 </div>
 
 <footer>
@@ -100,83 +126,43 @@ const glowTree      = document.getElementById('glowTree');
 
 // — your branch coords —
 const branchCoordinates = [
-  { x: 506, y: 180 },
-  { x: 521, y: 204 },
-  { x: 523, y: 182 },
-  { x: 521, y: 232 },
-  { x: 525, y: 252 },
-  { x: 504, y: 228 },
-  { x: 501, y: 265 },
-  { x: 522, y: 274 },
-  { x: 509, y: 293 },
-  { x: 477, y: 301 },
-  { x: 495, y: 312 },
-  { x: 470, y: 324 },
-  { x: 456, y: 312 },
-  { x: 486, y: 271 },
-  { x: 475, y: 253 },
-  { x: 464, y: 266 },
-  { x: 420, y: 308 },
-  { x: 443, y: 326 },
-  { x: 434, y: 338 },
-  { x: 409, y: 338 },
-  { x: 397, y: 328 },
-  { x: 383, y: 256 },
-  { x: 396, y: 252 },
-  { x: 418, y: 202 },
-  { x: 433, y: 199 },
-  { x: 460, y: 192 },
-  { x: 474, y: 192 },
-  { x: 493, y: 192 },
-  { x: 501, y: 141 },
-  { x: 509, y: 155 },
-  { x: 470, y: 155 },
-  { x: 496, y: 124 },
-  { x: 485, y: 117 },
-  { x: 476, y: 88 },
-  { x: 468, y: 104 },
-  { x: 459, y: 100 },
-  { x: 442, y: 112 },
-  { x: 427, y: 127 },
-  { x: 436, y: 134 },
-  { x: 407, y: 140 },
-  { x: 376, y: 179 },
-  { x: 373, y: 196 },
-  { x: 356, y: 198 },
-  { x: 426, y: 64 },
-  { x: 436, y: 57 },
-  { x: 454, y: 73 },
-  { x: 441, y: 86 },
-  { x: 412, y: 90 },
-  { x: 404, y: 68 },
-  { x: 412, y: 47 },
-  { x: 392, y: 59 },
-  { x: 384, y: 44 },
-  { x: 371, y: 40 },
-  { x: 375, y: 79 },
-  { x: 361, y: 94 },
-  { x: 355, y: 62 },
-  { x: 348, y: 38 },
-  { x: 332, y: 38 },
-  { x: 316, y: 60 },
-  { x: 306, y: 46 },
-  { x: 296, y: 42 },
-  { x: 346, y: 149 },
-  { x: 358, y: 128 },
-  { x: 375, y: 116 },
-  { x: 279, y: 40 },
-  { x: 280, y: 56 },
-  { x: 296, y: 82 },
-  { x: 304, y: 100 },
-  { x: 312, y: 109 },
-  { x: 272, y: 68 },
-  { x: 266, y: 53 },
-  { x: 248, y: 41 },
-  { x: 245, y: 61 },
-  { x: 235, y: 48 },
-  { x: 242, y: 81 },
-  { x: 215, y: 64 },
-  ];
+  { x: 207, y: 288 }, { x: 194, y: 288 }, { x: 202, y: 281 }, { x: 163, y: 278 },
+  { x: 180, y: 274 }, { x: 177, y: 263 }, { x: 201, y: 257 }, { x: 194, y: 252 },
+  { x: 147, y: 265 }, { x: 128, y: 256 }, { x: 145, y: 254 }, { x: 122, y: 238 },
+  { x: 123, y: 226 }, { x: 138, y: 221 }, { x: 153, y: 227 }, { x: 235, y: 222 },
+  { x: 215, y: 204 }, { x: 188, y: 207 }, { x: 202, y: 216 }, { x: 191, y: 182 },
+  { x: 174, y: 178 }, { x: 186, y: 190 }, { x: 146, y: 194 }, { x: 132, y: 184 },
+  { x: 110, y: 182 }, { x: 117, y: 202 }, { x: 119, y: 163 }, { x: 119, y: 144 },
+  { x: 130, y: 156 }, { x: 140, y: 151 }, { x: 150, y: 162 }, { x: 189, y: 208 },
+  { x: 178, y: 179 }, { x: 192, y: 184 }, { x: 243, y: 170 }, { x: 248, y: 187 },
+  { x: 227, y: 156 }, { x: 218, y: 158 }, { x: 210, y: 144 }, { x: 164, y: 157 },
+  { x: 158, y: 128 }, { x: 147, y: 110 }, { x: 135, y: 110 }, { x: 123, y: 122 },
+  { x: 243, y: 131 }, { x: 238, y: 118 }, { x: 222, y: 104 }, { x: 211, y: 104 },
+  { x: 206, y: 91 },  { x: 195, y: 112 }, { x: 174, y: 71 },  { x: 182, y: 54 },
+  { x: 187, y: 69 },  { x: 263, y: 96 },  { x: 257, y: 86 },  { x: 250, y: 70 },
+  { x: 211, y: 78 },  { x: 201, y: 46 },  { x: 214, y: 42 },  { x: 227, y: 56 },
+  { x: 239, y: 50 },  { x: 234, y: 35 },  { x: 251, y: 71 },  { x: 264, y: 90 },
+  { x: 266, y: 55 },  { x: 258, y: 38 },  { x: 251, y: 42 },  { x: 279, y: 35 },
+  { x: 294, y: 33 },  { x: 286, y: 44 },  { x: 298, y: 55 },  { x: 302, y: 82 },
+  { x: 314, y: 73 },  { x: 312, y: 37 },  { x: 321, y: 41 },  { x: 330, y: 51 },
+  { x: 346, y: 41 },  { x: 339, y: 60 },  { x: 316, y: 96 },  { x: 301, y: 108 },
+  { x: 291, y: 126 }, { x: 360, y: 53 },  { x: 367, y: 46 },  { x: 379, y: 60 },
+  { x: 365, y: 78 },  { x: 300, y: 169 }, { x: 318, y: 162 }, { x: 314, y: 150 },
+  { x: 342, y: 120 }, { x: 371, y: 97 },  { x: 359, y: 106 }, { x: 362, y: 117 },
+  { x: 385, y: 82 },  { x: 397, y: 83 },  { x: 409, y: 92 },  { x: 415, y: 104 },
+  { x: 394, y: 131 }, { x: 423, y: 120 }, { x: 412, y: 133 }, { x: 426, y: 132 },
+  { x: 350, y: 170 }, { x: 361, y: 169 }, { x: 321, y: 213 }, { x: 329, y: 217 },
+  { x: 340, y: 206 }, { x: 384, y: 165 }, { x: 397, y: 164 }, { x: 421, y: 152 },
+  { x: 414, y: 169 }, { x: 438, y: 152 }, { x: 426, y: 167 }, { x: 443, y: 168 },
+  { x: 419, y: 194 }, { x: 334, y: 214 }, { x: 322, y: 213 }, { x: 332, y: 270 },
+  { x: 345, y: 284 }, { x: 349, y: 259 }, { x: 372, y: 274 }, { x: 365, y: 282 },
+  { x: 383, y: 260 }, { x: 397, y: 274 }, { x: 411, y: 263 }, { x: 402, y: 254 },
+  { x: 384, y: 227 }, { x: 398, y: 214 }, { x: 414, y: 224 }, { x: 425, y: 242 },
+  { x: 434, y: 231 }, { x: 430, y: 210 }, { x: 419, y: 194 }, { x: 429, y: 202 },
+  { x: 442, y: 194 }, { x: 249, y: 194 }, { x: 240, y: 239 }, { x: 330, y: 267 },
+  { x: 238, y: 126 }, { x: 237, y: 108 }, { x: 289, y: 122 }
+];
+
 
 // — flip front/back —
 flipBtn.addEventListener('click', () => {
@@ -210,16 +196,14 @@ function animateLeafToBranch(branch) {
     const startX = leafRect.left;
     const startY = leafRect.top;
 
-    // Coordinates where the stem is located within the leaf image
-    const stemOffsetX = 259;
-    const stemOffsetY = 466;
+    // Dynamically calculate the stem position (bottom center)
+const stemOffsetX = leafRect.width / 2;
+const stemOffsetY = leafRect.height;
+const finalScale = 0.09;
 
-    // Scale factor used in final position
-    const finalScale = 0.09;
-
-    // Adjust branch position to offset the stem
-    const endX = treeRect.left + branch.x - stemOffsetX * finalScale;
-    const endY = treeRect.top + branch.y - stemOffsetY * finalScale;
+// Adjusted end coordinates so stem lands on the branch
+const endX = treeRect.left + branch.x - stemOffsetX * finalScale;
+const endY = treeRect.top + branch.y - stemOffsetY * finalScale;
 
     const dx = endX - startX;
     const dy = endY - startY;
@@ -287,6 +271,26 @@ function animateLeafToBranch(branch) {
   });
 }
 
+async function onSendClick() {
+  const message = document.getElementById('messageInput').value;
+  const signature = document.getElementById('signatureInput').value;
+  const leafPosition = { x: yourXValue, y: yourYValue }; // your logic for position
+
+  try {
+    // Save to Firestore
+    const docRef = await addDoc(collection(db, "leaves"), {
+      message,
+      signature,
+      leafPosition,
+      timestamp: serverTimestamp(),
+    });
+
+    // Redirect to tree page with new leaf id in URL
+    window.location.href = `treee.html?newLeafId=${docRef.id}`;
+  } catch (error) {
+    console.error("Error adding document: ", error);
+  }
+}
 
 
 // — send button —

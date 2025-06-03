@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Cormorant Garamond', serif;
+  background: url('https://www.transparenttextures.com/patterns/white-wall-3.png') repeat, #f3efe7;
+  color: #4b3a2f;
+}
+
+.review-wrapper {
+  max-width: 700px;
+  margin: 4rem auto;
+  background: #fffaf4;
+  padding: 2.5rem;
+  border: 1px solid #e0d3b6;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(87, 65, 38, 0.15);
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #5d4839;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: #8a7763;
+}
+
+.star-rating {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.star {
+  font-size: 2.5rem;
+  cursor: pointer;
+  color: #c7b08c;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.star:hover,
+.star.active {
+  color: #a6875b;
+  transform: scale(1.2);
+}
+
+textarea {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: 1px solid #dac5a4;
+  resize: none;
+  height: 130px;
+  background: #fffcf6;
+  margin-bottom: 1.5rem;
+  box-shadow: inset 0 0 4px #e8dbc7;
+}
+
+button {
+  background: #bda479;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  float: right;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #9d875f;
+}
+
+.comments {
+  clear: both;
+  margin-top: 3rem;
+}
+
+.comment {
+  background: #fff9ed;
+  padding: 1rem 1.2rem;
+  border-left: 4px solid #c0aa84;
+  border-radius: 4px;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 1px 4px rgba(90, 70, 50, 0.07);
+}
+
+.comment .meta {
+  font-size: 0.85rem;
+  color: #86745c;
+  margin-bottom: 0.3rem;
+  font-style: italic;
+}

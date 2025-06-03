@@ -1,79 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tree Page</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lora&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      transition: opacity 0.5s ease-in-out;
+      opacity: 1;
+      margin: 0;
+    }
+    .fade-out {
+      opacity: 0;
+    }
+
+    #treeContainer {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #treeImage {
+      width: 65%;
+      height: auto;
+      display: block;
+      margin-top: -52px;
+	margin-left: 280px;    
+}
+
+    .tree-leaf {
+      pointer-events: none;
+      position: absolute;
+      z-index: 2;
+      width: 60px;
+      transition: opacity 1s ease;
+    }
+  </style>
 </head>
 <body>
 
-   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lora&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-	<style>
-	   body{
-		transition: opacity 0.5s ease-in-out;
-		opacity: 1;
-	}
-	.fade-out{
-		opacity: 0;
-	}
-</style>
-</head>
-<body>
   <header class="site-header">
     <div class="hero">
-		<div class="navbar">
-		    <img src="logos2.png"
-			height="120"
-			width="120"
-			style="margin-left: -110px; 
-			margin-top: 0px;">
-		    <ul>
-			<li><a href="#" id="home">Home</a></li>
-
-<script>
-	document.getElementById('home').addEventListener('click',function() {
-	document.body.classList.add('fade-out');
-	setTimeout(function(){
-	  window.location.href = 'anne.html';
-}, 400);
-});
-	</script>
-			<li><a href="#">Tree</a></li>
-			<li><a href="#" id="leaf">Leaf</a></li>
-	<script>
-document.getElementById('leaf').addEventListener('click',function() {
-	document.body.classList.add('fade-out');
-	setTimeout(function(){
-	  window.location.href = 'leaf.html';
-}, 400);
-});
-	</script>
-		    </ul>
-
+      <div class="navbar">
+        <img src="logos2.png" height="120" width="120" style="margin-left: -110px; margin-top: 0px;" />
+        <ul>
+          <li><a href="#" id="home">Home</a></li>
+          <li><a href="#" id="tree">Tree</a></li>
+          <li><a href="#" id="leaf">Leaf</a></li>
+        </ul>
+      </div>
+    </div>
   </header>
-  <!-- Main Tree Image -->
+
   <main class="tree-section">
-    <img src="treewleaf.png" alt="Tree" class="tree-image">
+    <div id="treeContainer">
+      <img id="treeImage" src="treewleaf.png" alt="Tree">
+      <!-- Leaves will be dynamically added here -->
+    </div>
   </main>
 
-<body>
-  <div id="treeContainer">
-    <img id="treeImage" src="tree.png" alt="Tree">
-  </div>
+  <!-- Fade nav links -->
+  <script>
+    document.getElementById('home').addEventListener('click', function () {
+      document.body.classList.add('fade-out');
+      setTimeout(() => window.location.href = 'index.html', 400);
+    });
+    document.getElementById('tree').addEventListener('click', function () {
+      document.body.classList.add('fade-out');
+      setTimeout(() => window.location.href = 'treee.html', 400);
+    });
+    document.getElementById('leaf').addEventListener('click', function () {
+      document.body.classList.add('fade-out');
+      setTimeout(() => window.location.href = 'test.html', 400);
+    });
+  </script>
 
+  <!-- Firebase Script -->
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-firestore.js";
 
     const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_PROJECT_ID.appspot.com",
-      messagingSenderId: "YOUR_SENDER_ID",
-      appId: "YOUR_APP_ID"
+      apiKey: "AIzaSyCJC1HnvrzTmQZ33bKB58KEArHoU9MCWsI",
+      authDomain: "annefrankleaves.firebaseapp.com",
+      projectId: "annefrankleaves",
+      storageBucket: "annefrankleaves.appspot.com",
+      messagingSenderId: "239156775586",
+      appId: "1:239156775586:web:d12e394fafb0c9bb9e65fb"
     };
 
     const app = initializeApp(firebaseConfig);
@@ -83,46 +100,35 @@ document.getElementById('leaf').addEventListener('click',function() {
       const leavesRef = collection(db, "leaves");
       const snapshot = await getDocs(leavesRef);
 
+      const container = document.getElementById('treeContainer');
+
       snapshot.forEach(doc => {
         const leaf = doc.data();
-        const leafImg = document.createElement('img');
-        leafImg.src = 'leaf.png'; // or your transparent leaf image
-        leafImg.className = 'tree-leaf';
-        leafImg.style.position = 'absolute';
-        leafImg.style.left = leaf.x + 'px';
-        leafImg.style.top = leaf.y + 'px';
-        leafImg.style.width = '60px'; // adjust size
-        leafImg.style.transform = `rotate(${Math.random() * 60 - 30}deg)`;
 
-        const container = document.getElementById('treeContainer');
-        container.appendChild(leafImg);
+        // Expecting leafPosition like { x: 200, y: 300 }
+        if (leaf.position && typeof leaf.position.x === "number" && typeof leaf.position.y === "number") {
+          const leafImg = document.createElement('img');
+          leafImg.src = 'leaf (2).png'; // your transparent PNG leaf
+          leafImg.className = 'tree-leaf';
+
+          // Positioning based on saved coordinates
+          leafImg.style.left = `${leaf.position.x}px`;
+          leafImg.style.top = `${leaf.position.y}px`;
+
+          // Optional: random rotation
+          leafImg.style.transform = `rotate(${Math.random() * 60 - 30}deg)`;
+
+          // Optional tooltip
+          if (leaf.message || leaf.signature) {
+            leafImg.title = `${leaf.message || ''}\n— ${leaf.signature || ''}`;
+          }
+
+          container.appendChild(leafImg);
+        }
       });
     }
 
     loadLeaves();
   </script>
-
-  <style>
-    #treeContainer {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-    }
-
-    #treeImage {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .tree-leaf {
-      pointer-events: none;
-      position: absolute;
-      z-index: 2;
-      transition: opacity 1s ease;
-    }
-  </style>
-</body>
-
 </body>
 </html>

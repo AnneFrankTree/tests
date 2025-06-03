@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anne Frank Quotes — Museum Tribute</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Cardo:ital@0;1&display=swap');
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Cardo', serif;
+      background: linear-gradient(to bottom, #f4f1e6 0%, #e2d7bd 100%),
+                  url('https://www.transparenttextures.com/patterns/gplay.png') repeat;
+      color: #3e342a;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Subtle animated particles */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 10% 10%, rgba(255,255,255,0.06), transparent 50%),
+                  radial-gradient(circle at 90% 40%, rgba(255,255,255,0.04), transparent 60%);
+      animation: float 20s infinite linear;
+      z-index: 0;
+    }
+
+    @keyframes float {
+      0% { background-position: 0 0, 100% 0; }
+      100% { background-position: 100% 100%, 0 100%; }
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 1rem 2rem;
+      position: relative;
+      z-index: 2;
+    }
+header h1 {
+  font-size: 3rem;
+font-family: 'Cinzel', serif;
+  color: #5a4332;
+  margin: 0 0 0.5rem;
+  letter-spacing: 0.06em;
+  position: relative;
+}
+
+header h1::after {
+  content: '';
+  width: 100px;
+font-family: 'Cinzel', serif;
+  height: 4px;
+  background: linear-gradient(90deg, #c3a76f, #e6c67c);
+  display: block;
+  margin: 0.4rem auto 0;
+  border-radius: 2px;
+  box-shadow: 0 0 8px #d2b58488;
+}
+
+header .subtitle {
+  font-style: italic;
+font-family: 'Cinzel', serif;
+  color: #6f5e4d;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+   
+    main {
+      max-width: 1200px;
+      margin: 3rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 2rem;
+      padding: 0 2rem;
+      z-index: 2;
+      position: relative;
+    }
+
+    .quote-card {
+      background: rgba(255, 248, 230, 0.75);
+      border: 1px solid #d4c2a3;
+      border-radius: 16px;
+      backdrop-filter: blur(6px);
+      box-shadow:
+        inset 0 0 30px #fff7dc88,
+        0 8px 20px rgba(0,0,0,0.15);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 1s ease forwards;
+      transform: translateY(30px);
+      opacity: 0;
+    }
+
+    .quote-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow:
+        0 12px 24px rgba(0,0,0,0.2),
+        inset 0 0 20px #fff1ce88;
+    }
+
+    .quote-card:nth-child(1) { animation-delay: 0.2s; }
+    .quote-card:nth-child(2) { animation-delay: 0.4s; }
+    .quote-card:nth-child(3) { animation-delay: 0.6s; }
+    .quote-card:nth-child(4) { animation-delay: 0.8s; }
+    .quote-card:nth-child(5) { animation-delay: 1.0s; }
+
+    @keyframes fadeInUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .quote-text {
+      font-size: 1.25rem;
+      font-style: italic;
+      line-height: 1.7;
+      color: #3c2f25;
+      position: relative;
+      z-index: 2;
+    }
+
+    .quote-text::first-letter {
+      float: left;
+      font-size: 3rem;
+      font-weight: bold;
+      line-height: 1;
+      color: #a9824f;
+      font-family: 'Cinzel', serif;
+      margin-right: 0.2em;
+      text-shadow: 1px 1px 0 #fff4d6;
+    }
+
+    .quote-author {
+      margin-top: 1.5rem;
+      text-align: right;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #6e5b4a;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      color: #6e6454;
+      font-style: italic;
+      font-size: 0.95rem;
+      z-index: 2;
+      position: relative;
+    }
+
+    /* Quote marks overlay */
+    .quote-card::before {
+      content: '❝';
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      font-size: 4rem;
+      color: #d2ba94;
+      opacity: 0.15;
+      z-index: 1;
+    }
+.dropdown-menu {
+  position: fixed;
+  top: 1.5rem;
+  right: 2rem;
+  font-family: 'Merriweather', serif;
+  user-select: none;
+  z-index: 999;
+}
+
+.dropdown-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 1px #c3a76f);
+  transition: filter 0.3s ease;
+}
+
+.dropdown-button:hover,
+.dropdown-button:focus {
+  filter: drop-shadow(0 0 5px #e6c67c);
+  outline: none;
+}
+
+.dropdown-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.dropdown-list {
+  margin: 0;
+  padding: 0.4rem 0;
+  list-style: none;
+  background: #f9f2d9;
+  border: 1.8px solid #dbc8a6;
+  border-radius: 8px;
+  box-shadow:
+    0 6px 15px rgba(0, 0, 0, 0.12),
+    inset 0 0 20px #fff6da;
+  position: absolute;
+  right: 0;
+  top: 2.8rem;
+  min-width: 180px;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.dropdown-list[hidden] {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+}
+
+.dropdown-list:not([hidden]) {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dropdown-list li {
+  padding: 0;
+}
+
+.dropdown-list a {
+  text-align: center;
+  display: block;
+  padding: 0.6rem 1.2rem;
+  color: #5a4332;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.25s ease;
+}
+
+.dropdown-list a:hover,
+.dropdown-list a:focus {
+  background-color: #dbc8a6;
+  color: #3e2f25;
+  outline: none;
+}
+
+.dropdown-list hr {
+  border: none;
+  border-top: 1px solid #dbc8a6;
+  margin: 0.2rem 0;
+}
+
+    /* Responsive refinements */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.4rem;
+      }
+      .quote-card {
+        padding: 2rem;
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Anne Frank Quotes</h1>
+    <p class="subtitle">Words of Hope and Courage From a Timeless Voice</p>
+  </header>
+
+<div class="dropdown-menu">
+  <button class="dropdown-button" aria-haspopup="true" aria-expanded="false" aria-controls="dropdown-list">
+    <img src="https://cdn-icons-png.flaticon.com/512/56/56763.png" alt="Menu" class="dropdown-icon" />
+  </button>
+  <ul id="dropdown-list" class="dropdown-list" role="menu" hidden>
+    <li role="none"><a role="menuitem" href="index.html">Home</a></li>
+    <hr />
+    <li role="none"><a role="menuitem" href="treee.html">Tree</a></li>
+    <hr />
+    <li role="none"><a role="menuitem" href="test.html">Leaf</a></li>
+<hr />
+<li role="none"><a role="menuitem" href="resource.html">Movies</a></li>
+<hr />
+<li role="none"><a role="menuitem" href="resource2.html">Books</a></li>
+
+  </ul>
+</div>
+  <main>
+    <article class="quote-card">
+      <p class="quote-text">“In spite of everything, I still believe that people are really good at heart.”</p>
+      <p class="quote-author">— Anne Frank</p>
+    </article>
+
+    <article class="quote-card">
+      <p class="quote-text">“In the long run, the sharpest weapon of all is a kind and gentle spirit.”</p>
+      <p class="quote-author">— Anne Frank</p>
+    </article>
+
+    <article class="quote-card">
+      <p class="quote-text">“How wonderful it is that nobody need wait a single moment before starting to improve the world.”</p>
+      <p class="quote-author">— Anne Frank</p>
+    </article>
+
+    <article class="quote-card">
+      <p class="quote-text">“Think of all the beauty still left around you and be happy.”</p>
+      <p class="quote-author">— Anne Frank</p>
+    </article>
+
+    <article class="quote-card">
+      <p class="quote-text">“Where there’s hope, there’s life. It fills us with fresh courage and makes us strong again.”</p>
+      <p class="quote-author">— Anne Frank</p>
+    </article>
+
+<article class="quote-card">
+      <p class="quote-text">“This is not the end. It is not even the beginning of the end. But it is, perhaps, the end of the beginning.”</p>
+      <p class="quote-author">— Anne Frank</p>
+    </article>
+
+<article class="quote-card">
+      <p class="quote-text">“Dead people receive more flowers than the living ones because regret is stronger than gratitude.”</p>
+      <p class="quote-author">— Anne Frank</p>
+    </article>
+
+<article class="quote-card">
+      <p class="quote-text">“I don't think of all the misery but of the beauty that still remains.”</p>
+      <p class="quote-author">— Anne Frank</p>
+    </article>
+
+<article class="quote-card">
+      <p class="quote-text">“We all live with the objective of being happy; our lives are all different and yet the same.”</p>
+      <p class="quote-author">— Anne Frank</p>
+    </article>
+
+<article class="quote-card">
+      <p class="quote-text">“What a wonderful thought it is that some of the best days of our lives haven't even happened yet.”</p>
+      <p class="quote-author">— Anne Frank</p>
+    </article>
+  </main>
+
+  <footer>
+    &copy; 2025 Anne Frank Tribute — Preserving the voice of hope and humanity
+  </footer>
+
+<script>
+const dropdownButton = document.querySelector('.dropdown-button');
+const dropdownList = document.getElementById('dropdown-list');
+
+dropdownButton.addEventListener('click', () => {
+  const expanded = dropdownButton.getAttribute('aria-expanded') === 'true';
+  dropdownButton.setAttribute('aria-expanded', String(!expanded));
+  if (expanded) {
+    dropdownList.setAttribute('hidden', '');
+  } else {
+    dropdownList.removeAttribute('hidden');
+  }
+});
+
+// Close dropdown if clicked outside
+document.addEventListener('click', (e) => {
+  if (!dropdownButton.contains(e.target) && !dropdownList.contains(e.target)) {
+    dropdownList.setAttribute('hidden', '');
+    dropdownButton.setAttribute('aria-expanded', 'false');
+  }
+});
+</script>
+</body>
+</html>

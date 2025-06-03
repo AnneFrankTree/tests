@@ -54,6 +54,66 @@ ul li a:hover::after{
 .navbar-icons{
 	margin-left: 40px;
 }
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 40px;
+	left: 70%;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-family: "Sour Gummy", sans-serif;
+    transition: background 0.3s;
+    border-bottom: 1px solid #ccc;
+}
+
+.dropdown-content a:last child{
+border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+#dropdownMenu input[type="text"] {
+  font-family: 'Sour Gummy', cursive;
+  font-weight: 400;
+  font-size: 14px;
+  padding: 6px 8px;
+  margin: 8px 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: calc(100% - 20px);
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #333;
+  outline: none;
+}
+
+#dropdownMenu input[type="text"]:focus {
+  border-color: #6a8fbd;
+  box-shadow: 0 0 5px rgba(106,143,189,0.5);
+}
+
+.show {
+    display: block;
+}
+
 .banner{
 	display: flex;
 	margin-top: 80px;
@@ -104,6 +164,7 @@ footer {
 	height: 50px;
 	width: 50px;
 	cursor: pointer;
+        float: right;
 }
 .search-box input{
 	width: 100%;
